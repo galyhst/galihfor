@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebuah Pesan Maaf...</title>
+    <style>
+        /* CSS untuk mempercantik tampilan */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fcefee; /* Warna latar yang lembut */
+            color: #333;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #d9534f; /* Warna merah yang lembut */
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #555;
+            font-weight: 400;
+        }
+        img.gif {
+            max-width: 200px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #444;
+        }
+        .placeholder {
+            background-color: #fff8c4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .buttons {
+            margin-top: 30px;
+            position: relative; /* Diperlukan untuk tombol yang "lari" */
+            height: 50px; /* Beri ruang agar tombol tidak lari ke luar */
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yesButton {
+            background-color: #5cb85c; /* Hijau */
+            color: white;
+            font-weight: bold;
+        }
+        #noButton {
+            background-color: #f0ad4e; /* Kuning */
+            color: white;
+            position: absolute; /* Ini bagian lucunya */
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Maaf ya, alyasri lestari sayangku cintaku</h1>
+        
+        <h2>otakku Lagi Error Parah 😭</h2>
+
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTl0MTFmdHFmNTdqcHFucG5uZHczNzh5ZmMwZTNvOHlqYzVjbjU0biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6ZtpxSZbmbYj9P1e/giphy.gif" alt="Animasi lucu minta maaf" class="gif">
+
+        <p>
+            Aku tahu aku salah banget <span class="placeholder">maaf ya aku egois maaf aku selalu ngecewain kamu, maaf aku selalu bikin hati kamu kaya di robek, aku udah ribuan kali sepertinya minta maaf sama kamu, mungkin kamu udah bosen sama minta maaf aku, tapi yang namanya juga kesalahan mau gimana lagi, aku tau ini salah banget dan sangat nyakitin kamu. tapi perlu kamu tau, aku kaya gini juga dalam lubuk hati yang paling dalam, aku sangat menyayangimu tanpa alasan.</span>.
+        </p>
+        <p>
+            Jujur, otakku kayaknya lagi <i>berantakan banget</i>. Aku nyesel banget udah bikin kamu <span class="placeholder">kecewa berat mungkin ya dan malah sampe bikin kamu mundur, rasanya kaya di banting kebawah jurang yang paling dalam</span>. 
+            Maaf ya kalo kamu bacanya geli kalo kek apaan banget, cuman ini yang bisa aku lakuin sekarang
+        </p>
+        <p>
+            mungkin setelah <i>baca pesan ini</i> kita udah udahan tapi aku hanya ingin minta maaf <i>untuk terakhir kalinya</i>dan gak kalah penting yaitu aku sangat sangat berterimakasih sama kamu, karna udah bantu aku sejauh ini. 
+            terimakasih atas semuanya dan segala yang kamu keluarkan untukku (<i>semoga kamu selalu bahagia ketika tidak bersamaku</i> SEE U!).
+        </p>
+
+        <hr style="border: 0; border-top: 1px dashed #ccc; margin: 30px 0;">
+
+        <h2>Jadi... Apakah permintaan maaf ini di-<i>approve</i>?</h2>
+
+        <div class="buttons">
+            <button id="yesButton">Dimaafin deh...</button>
+            <button id="noButton">Masih Marah!</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript untuk bagian lucunya
+        
+        // Tombol "Dimaafin"
+        const yesButton = document.getElementById('yesButton');
+        yesButton.addEventListener('click', function() {
+            alert('YAY! Makasih banyak, sayang! ❤️ Kamu yang terbaik. Aku janji nggak akan ngulangin lagi. Love you!');
+            // Sembunyikan tombol setelah diklik
+            document.querySelector('.buttons').style.display = 'none';
+        });
+
+        // Tombol "Masih Marah" yang akan lari
+        const noButton = document.getElementById('noButton');
+        noButton.addEventListener('mouseover', function() {
+            // Pindahkan tombol ke posisi acak di dalam container
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            // Hitung posisi baru secara acak
+            // - 50 adalah buffer agar tidak terlalu ke pinggir
+            const newTop = Math.random() * (containerRect.height - buttonRect.height - 50) + container.offsetTop + 20;
+            const newLeft = Math.random() * (containerRect.width - buttonRect.width - 50) + container.offsetLeft + 20;
+
+            // Terapkan posisi baru
+            noButton.style.position = 'fixed'; // Gunakan fixed agar bisa "lari" di seluruh layar
+            noButton.style.top = newTop + 'px';
+            noButton.style.left = newLeft + 'px';
+        });
+
+        // Jika dia berhasil mengklik tombol "Masih Marah" (misal di HP)
+        noButton.addEventListener('click', function() {
+            alert('Yah, ketangkep :( Yaudah, aku coba lagi nanti ya. Tapi aku beneran minta maaf...');
+        });
+    </script>
+
+</body>
+</html>
